@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { generateQR } from 'boot/qrcode';
-import { handleAuthStore } from 'boot/handleAuthStore';
 
 import CurrentStoreInfo from 'src/components/CurrentStoreInfo.vue';
 import Banner from 'components/UserBanner.vue';
@@ -23,8 +22,6 @@ import CartItems from 'components/CartItem.vue';
 let qr = ref('');
 
 onMounted(async () => {
-  handleAuthStore();
-
   let data = {
     name: 'BallPalace',
     photoURL: 'https://i.imgur.com/zdHr5JO.jpeg',

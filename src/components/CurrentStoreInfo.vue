@@ -2,7 +2,7 @@
   <div class="flex items-end q-mx-sm q-mt-md">
     <q-avatar size="50px">
       <q-img
-        src="https://i.imgur.com/AD3MbBi.jpeg"
+        :src="store.store?.photoURL"
         alt="test"
         referrerpolicy="no-referrer"
       />

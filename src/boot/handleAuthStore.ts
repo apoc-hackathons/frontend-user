@@ -9,10 +9,10 @@ export const handleAuthStore = () => {
   const router = useRouter();
 
   if (!user.user?.uid) {
-    router.push('/scan');
+    router.push('/login');
   }
-
   if (!store.store?.name) {
     router.push('/scan');
+    console.log('going to scan');
   }
 };

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { app } from 'boot/firebase';
+import { useRouter } from 'vue-router';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -25,7 +26,11 @@ export const userStore = defineStore('user', {
 
     handleChange() {
       auth.onAuthStateChanged((user) => {
-        this.user = user ? user : null;
+        if (user) {
+          this.user = user;
+        } else {
+          this.user = null;
+        }
       });
     },
 
