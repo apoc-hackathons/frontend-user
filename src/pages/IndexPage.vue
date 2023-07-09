@@ -21,6 +21,8 @@
     <div v-for="n in 5" :key="n">
       <CartItems name="sex" :price="n" :image="qr" :quantity="n" />
     </div>
+
+    <scanner-comp />
   </q-page>
 </template>
 
@@ -31,13 +33,14 @@ import { userStore } from 'stores/userStore';
 
 import Banner from 'components/UserBanner.vue';
 import CartItems from 'components/CartItem.vue';
+import ScannerComp from 'components/ScannerComp.vue';
 
 const user = userStore();
 let qr = ref('');
 
 onMounted(async () => {
   let data = {
-    name: 'Balls',
+    name: 'sex',
     price: 3,
   };
 

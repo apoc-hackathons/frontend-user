@@ -3,7 +3,7 @@ import QRCode from 'qrcode';
 
 export const generateQR = async (text: string) => {
   try {
-    return QRCode.toDataURL(text, {
+    return await QRCode.toDataURL(text, {
       type: 'image/webp',
       errorCorrectionLevel: 'H',
     });
