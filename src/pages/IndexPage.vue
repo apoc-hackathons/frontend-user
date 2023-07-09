@@ -6,8 +6,10 @@
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
 
-    <div v-for="n in 5" :key="n">
-      <CartItems name="sex" :price="n" :image="qr" :quantity="n" />
+    <ScannerComp />
+    {{ cart.cart }}
+    <div v-for="cartItem in cart.cart" :key="cartItem.id">
+      <CartItems :name="cartItem.name" :price="cartItem.price" :image="cartItem.photoURL" :quantity="cartItem.quantity" />
     </div>
   </q-page>
 </template>
@@ -16,13 +18,11 @@
 import { onMounted, ref } from 'vue';
 import { generateQR } from 'boot/qrcode';
 
-import { userStore } from 'stores/userStore';
+import { useCartStore } from 'stores/cartStore';
 
-// import Banner from 'components/UserBanner.vue';
-// import CartItems from 'components/CartItem.vue';
-// import ScannerComp from 'components/ScannerComp.vue';
+import ScannerComp from 'components/ScannerComp.vue';
 
-const user = userStore();
+const cart = useCartStore();
 import CurrentStoreInfo from 'src/components/CurrentStoreInfo.vue';
 import Banner from 'components/UserBanner.vue';
 import CartItems from 'components/CartItem.vue';
@@ -30,8 +30,10 @@ let qr = ref('');
 
 onMounted(async () => {
   let data = {
+    id: 'sfgsdf23',
     name: 'BallPalace',
     photoURL: 'https://i.imgur.com/zdHr5JO.jpeg',
+    price: 100,
   };
 
   qr.value = await generateQR(JSON.stringify(data));
