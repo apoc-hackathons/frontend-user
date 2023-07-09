@@ -10,6 +10,8 @@
         </div>
       </q-card-section>
     </q-card-section>
+
+    <q-card-section> Quantity: {{ quantity }} </q-card-section>
   </q-card>
 </template>
 
@@ -20,6 +22,7 @@ const props = defineProps<{
   name: string;
   price: number;
   image: string;
+  quantity: number;
 }>();
 
 const { name, price, image } = toRefs(props);

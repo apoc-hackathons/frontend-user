@@ -18,7 +18,9 @@
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
 
-    <CartItems name="sex" :price="3" :image="qr" />
+    <div v-for="n in 5" :key="n">
+      <CartItems name="sex" :price="n" :image="qr" :quantity="n" />
+    </div>
   </q-page>
 </template>
 
@@ -39,8 +41,6 @@ onMounted(async () => {
     price: 3,
   };
 
-  let qrGen = await generateQR(JSON.stringify(data)).then((data) => {
-    qr.value = data;
-  });
+  qr.value = await generateQR(JSON.stringify(data));
 });
 </script>
