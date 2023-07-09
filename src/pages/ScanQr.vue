@@ -1,24 +1,24 @@
 <template>
   <div>
-    <p class="error">{{ error }}</p>
-
-    {{ store.store?.name }}
-    {{ result }}
-
-    <qrcode-stream @decode="onDecode" @init="onInit" />
+    <div class="flex flex-center q-pa-lg">
+      <qrcode-stream @decode="onDecode" @init="onInit" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 import { QrcodeStream } from 'vue-qrcode-reader';
 
 import { currentStore } from 'stores/whatStoreStore';
 
 // data
-const result = ref<Store>();
+const result = ref();
 const error = ref('');
 const store = currentStore();
+const router = useRouter();
 
 type Store = {
   name: string;
@@ -26,19 +26,13 @@ type Store = {
 };
 
 // methods
-const onDecode = (data: Store) => {
+const onDecode = (data: string) => {
   result.value = data;
-  store.joinStore(data);
+  store.joinStore(JSON.parse(data));
+  router.push('/');
 };
 
 const onInit = async () => {
   console.log('whatever');
 };
 </script>
-
-<style scoped>
-.error {
-  font-weight: bold;
-  color: red;
-}
-</style>
