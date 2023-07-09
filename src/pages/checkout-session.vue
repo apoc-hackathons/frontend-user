@@ -23,7 +23,7 @@ export default {
         },
       ],
       successURL: 'http://localhost:9000/#/success',
-      cancelURL: 'http://localhost:9000/#/stripe_cancel',
+      cancelURL: 'http://localhost:9000/#/cancelled',
     };
   },
   methods: {

@@ -23,6 +23,14 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
+  {
+    path: '/success',
+    component: () => import('layouts/SuccessLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/stripe-success.vue') },
+    ],
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
