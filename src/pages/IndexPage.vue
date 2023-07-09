@@ -4,11 +4,7 @@
 
     <div class="flex items-end q-mx-sm q-mt-md">
       <q-avatar size="50px">
-        <q-img
-          :src="user.user?.photoURL!"
-          alt="test"
-          referrerpolicy="no-referrer"
-        />
+        <q-img :src="user.user?.photoURL!" alt="test" referrerpolicy="no-referrer" />
       </q-avatar>
 
       <h2 class="text-h5 q-ma-none q-ml-sm text-bold">
@@ -31,9 +27,9 @@ import { onMounted, ref } from 'vue';
 import { generateQR } from 'boot/qrcode';
 import { userStore } from 'stores/userStore';
 
-import Banner from 'components/UserBanner.vue';
-import CartItems from 'components/CartItem.vue';
-import ScannerComp from 'components/ScannerComp.vue';
+// import Banner from 'components/UserBanner.vue';
+// import CartItems from 'components/CartItem.vue';
+// import ScannerComp from 'components/ScannerComp.vue';
 
 const user = userStore();
 let qr = ref('');

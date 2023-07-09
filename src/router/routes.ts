@@ -7,6 +7,9 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: '/scan', component: () => import('pages/ScanQr.vue') },
+      { path: '/checkout', component: () => import('pages/checkout-session.vue') },
+      { path: '/stripe_success', component: () => import('src/pages/stripe-success.vue') },
+      { path: '/stripe_cancel', component: () => import('src/pages/stripe-cancel.vue') },
     ],
   },
 
