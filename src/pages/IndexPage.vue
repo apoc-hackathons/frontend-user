@@ -38,25 +38,8 @@
     </div>
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
-    <img :src="qr" alt="" />
-    <q-card class="shadow-16 q-mb-sm" style="border-radius: 8px" flat bordered>
-      <q-card-section horizontal>
-        <q-img
-          class="col-2"
-          width="120px"
-          :ratio="1 / 1"
-          :src="user.user?.photoURL!"
-        />
-        <q-card-section>
-          <div class="text-h5 text-weight-bold">Cow</div>
-          <div class="text-h6 text-weight-medium">
-            <!-- {{ n > 0 ? n : '' }} -->
-            <!-- {{ n === 0 ? 'Free' : n === 1 ? 'Re.' : 'Rs.' }} -->
-            2 Rs
-          </div>
-        </q-card-section>
-      </q-card-section>
-    </q-card>
+
+    <CartItems name="sex" :price="3" :image="qr" />
   </q-page>
 </template>
 
@@ -64,6 +47,8 @@
 import { onMounted, ref } from 'vue';
 import { generateQR } from 'boot/qrcode';
 import { userStore } from 'stores/userStore';
+
+import CartItems from 'components/CartItem.vue';
 
 const user = userStore();
 let qr = ref('');
