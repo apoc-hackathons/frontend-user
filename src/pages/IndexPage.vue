@@ -40,8 +40,8 @@ let qr = ref('');
 
 onMounted(async () => {
   let data = {
-    name: 'sex',
-    price: 3,
+    name: 'BallPalace',
+    photoURL: 'https://i.imgur.com/zdHr5JO.jpeg',
   };
 
   qr.value = await generateQR(JSON.stringify(data));
