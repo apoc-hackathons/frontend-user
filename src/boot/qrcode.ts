@@ -5,7 +5,7 @@ export const generateQR = async (text: string) => {
   try {
     return await QRCode.toDataURL(text, {
       type: 'image/webp',
-      errorCorrectionLevel: 'L',
+      errorCorrectionLevel: 'M',
     });
   } catch (err) {
     throw err;
