@@ -14,14 +14,14 @@
       </h2>
     </div>
 
-    <!-- <q-btn
+    <q-btn
       color="white"
       text-color="primary"
       :label="user.user?.uid ? 'Logout' : 'Login'"
       :icon="user.user?.uid ? 'logout' : 'login'"
       class="q-ma-none"
       @click="handleLogin()"
-    /> -->
+    />
 
     <div class="flex items-end q-mx-sm q-mt-md">
       <q-avatar size="50px">
@@ -38,39 +38,41 @@
     </div>
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
-
-    <div v-for="n in 5" :key="n">
-      <q-card
-        class="shadow-16 q-mb-sm"
-        style="border-radius: 8px"
-        flat
-        bordered
-      >
-        <q-card-section horizontal>
-          <q-img
-            class="col-2"
-            width="120px"
-            :ratio="1 / 1"
-            :src="user.user?.photoURL!"
-          />
-          <q-card-section>
-            <div class="text-h5 text-weight-bold">Cow</div>
-            <div class="text-h6 text-weight-medium">
-              {{ n > 0 ? n : '' }}
-              {{ n === 0 ? 'Free' : n === 1 ? 'Re.' : 'Rs.' }}
-            </div>
-          </q-card-section>
+    <img :src="qr" alt="" />
+    <q-card class="shadow-16 q-mb-sm" style="border-radius: 8px" flat bordered>
+      <q-card-section horizontal>
+        <q-img
+          class="col-2"
+          width="120px"
+          :ratio="1 / 1"
+          :src="user.user?.photoURL!"
+        />
+        <q-card-section>
+          <div class="text-h5 text-weight-bold">Cow</div>
+          <div class="text-h6 text-weight-medium">
+            <!-- {{ n > 0 ? n : '' }} -->
+            <!-- {{ n === 0 ? 'Free' : n === 1 ? 'Re.' : 'Rs.' }} -->
+            2 Rs
+          </div>
         </q-card-section>
-      </q-card>
-    </div>
+      </q-card-section>
+    </q-card>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { generateQR } from 'boot/qrcode';
 import { userStore } from 'stores/userStore';
 
 const user = userStore();
+let qr = ref('');
+
+onMounted(async () => {
+  let qrGen = await generateQR('gay sex').then((data) => {
+    qr.value = data;
+  });
+});
 
 const handleLogin = () => {
   user.user?.uid ? user.logout() : user.login();

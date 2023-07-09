@@ -13,11 +13,12 @@
     "build": "quasar build"
   },
   "dependencies": {
+    "@keeex/qrcodejs-kx": "^1.0.2",
     "@quasar/extras": "^1.0.0",
     "axios": "^1.2.1",
+    "firebase": "^9.23.0",
     "pinia": "^2.0.11",
     "qrcode": "^1.5.3",
-    "firebase": "^9.23.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",
     "@types/node": "^12.20.21",
+    "@types/qrcode": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^10.4.2",
