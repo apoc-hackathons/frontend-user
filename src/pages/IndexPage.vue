@@ -22,13 +22,18 @@
       class="q-ma-none"
       @click="handleLogin()"
     />
+
+    <q-img :src="qr" alt="" />
   </q-page>
 </template>
 
 <script setup lang="ts">
 import { userStore } from 'stores/userStore';
+import { generateQR } from 'boot/qrcode';
 
 const user = userStore();
+
+const qr = generateQR('sex');
 
 const handleLogin = () => {
   user.user?.uid ? user.logout() : user.login();
