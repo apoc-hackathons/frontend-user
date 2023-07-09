@@ -6,4 +6,8 @@
   </q-layout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { userStore } from 'stores/userStore';
+
+userStore().handleChange();
+</script>

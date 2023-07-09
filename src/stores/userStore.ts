@@ -26,8 +26,6 @@ export const userStore = defineStore('user', {
     handleChange() {
       auth.onAuthStateChanged((user) => {
         this.user = user ? user : null;
-
-        localStorage.setItem('user', JSON.stringify(this.user));
       });
     },
 

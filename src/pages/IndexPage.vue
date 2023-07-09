@@ -1,7 +1,7 @@
 <template>
-  <q-page padding>
+  <q-page class="q-pa-sm">
     <div class="flex items-end gap-2 banner q-pa-md">
-      <q-avatar size="70px">
+      <q-avatar size="50px">
         <q-img
           :src="user.user?.photoURL!"
           alt="test"
@@ -9,37 +9,32 @@
         />
       </q-avatar>
 
-      <h2 class="text-h3 q-ma-none q-mx-sm text-bold">
+      <h2 class="text-h6 q-ma-none q-ml-sm text-bold text-white">
         Welcome {{ user.user?.displayName }}!
       </h2>
-      <q-btn
-        color="white"
-        text-color="primary"
-        label="Login"
-        icon="login"
-        class="q-ma-none"
-        @click="user.login()"
-      />
     </div>
+
+    <q-btn
+      color="white"
+      text-color="primary"
+      :label="user.user?.uid ? 'Logout' : 'Login'"
+      :icon="user.user?.uid ? 'logout' : 'login'"
+      class="q-ma-none"
+      @click="handleLogin()"
+    />
   </q-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+// import { defineComponent } from 'vue';
 
 import { userStore } from 'stores/userStore';
 
-export default defineComponent({
-  name: 'IndexPage',
+const user = userStore();
 
-  setup() {
-    const user = userStore();
-
-    return {
-      user,
-    };
-  },
-});
+const handleLogin = () => {
+  user.user?.uid ? user.logout() : user.login();
+};
 </script>
 
 <style lang="scss">
