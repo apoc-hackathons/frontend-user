@@ -3,14 +3,14 @@
     <div class="flex items-end gap-2 banner q-pa-md">
       <q-avatar size="70px">
         <q-img
-          :src="user.user.photoURL"
+          :src="user.user?.photoURL!"
           alt="test"
           referrerpolicy="no-referrer"
         />
       </q-avatar>
 
       <h2 class="text-h3 q-ma-none q-mx-sm text-bold">
-        Welcome {{ user.user.displayName }} !
+        Welcome {{ user.user?.displayName }}!
       </h2>
       <q-btn
         color="white"
