@@ -1,5 +1,7 @@
 <template>
-  <q-btn color="primary" icon="login" label="Login" @click="login()" />
+  <div class="absolute-center">
+    <q-btn color="primary" icon="login" label="Login With Google" class="q-px-lg q-py-md" @click="login()" />
+  </div>
 </template>
 
 <script lang="ts" setup>

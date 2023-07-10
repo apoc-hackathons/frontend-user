@@ -4,15 +4,12 @@
 
     <CurrentStoreInfo />
 
-    <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
-
-
-
+    <div class="text-h5 text-weight-bold  q-ma-md">Scan Products</div>
     <div class="flex flex-center q-my-xl">
       <ScannerComp style="border-radius: 16px;" />
     </div>
-    {{ cart.cart }}
 
+    <div class="text-h5 text-weight-bold q-my-md">Your {{ cart.cart?.length === 0 ? "cart is empty!" : "Cart" }}</div>
     <div v-for="cartItem in cart.cart" :key="cartItem.id">
       <CartItems :name="cartItem.name" :price="cartItem.price" :image="cartItem.photoURL" :quantity="cartItem.quantity"
         :id="cartItem.id" />
