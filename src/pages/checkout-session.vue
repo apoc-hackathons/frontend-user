@@ -18,8 +18,8 @@ export default {
     return {
       loading: false,
 
-      successURL: 'http://localhost:9000/#/success',
-      cancelURL: 'http://localhost:9000/#/cancelled',
+      successURL: 'https://swiftcart-app.netlify.app/#/success',
+      cancelURL: 'https://swiftcart-app.netlify.app/#/cancelled',
       id: ''
     };
   },
