@@ -17,7 +17,7 @@
         :id="cartItem.id" />
     </div>
 
-    <q-btn color="primary" icon="check" label="OK" @click="getTotal()" />
+    <!-- <q-btn color="primary" icon="check" label="OK" @click="getTotal()" /> -->
 
   </q-page>
 </template>
