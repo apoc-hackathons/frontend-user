@@ -2,7 +2,7 @@
   <div>
     <stripe-checkout ref="checkoutRef" mode="payment" :pk="publishableKey" :line-items="lineItems"
       :success-url="successURL" :cancel-url="cancelURL" @loading="v => loading = v" />
-    <q-btn @click="submit" label="Pay" color="primary" />
+
   </div>
 </template>
 
@@ -26,11 +26,9 @@ export default {
       cancelURL: 'http://localhost:9000/#/cancelled',
     };
   },
-  methods: {
-    submit() {
-      // You will be redirected to Stripe's secure checkout page
-      this.$refs.checkoutRef.redirectToCheckout();
-    },
-  },
+  mounted() {
+    this.$refs.checkoutRef.redirectToCheckout();
+  }
+
 };
 </script>

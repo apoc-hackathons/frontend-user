@@ -14,5 +14,8 @@ export const currentStore = defineStore('store', {
     joinStore(newStore: Store) {
       this.store = newStore;
     },
+    leaveStore() {
+      this.store = null;
+    },
   },
 });

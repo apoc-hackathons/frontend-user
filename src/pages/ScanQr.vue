@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="text-h5 text-weight-bold  q-ma-md">Join a Store</div>
     <div class="flex flex-center q-pa-lg">
       <qrcode-stream @decode="onDecode" @init="onInit" />
     </div>
