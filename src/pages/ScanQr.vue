@@ -16,7 +16,6 @@ import { currentStore } from 'stores/whatStoreStore';
 
 // data
 const result = ref();
-const error = ref('');
 const store = currentStore();
 const router = useRouter();
 

@@ -10,20 +10,35 @@
         </div>
       </q-card-section>
     </q-card-section>
+    {{ myQuantity }}
+    <q-card-section>
+      Quantity:
+      <q-select filled v-model="myQuantity" :options="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" />
 
-    <q-card-section> Quantity: {{ quantity }} </q-card-section>
+    </q-card-section>
   </q-card>
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue';
+import { toRefs, ref, watchEffect } from 'vue';
+
+import { useCartStore } from 'stores/cartStore';
+const cart = useCartStore();
 
 const props = defineProps<{
   name: string;
   price: number;
   image: string;
   quantity: number;
+  id: string
 }>();
 
-const { name, price, image } = toRefs(props);
+const { name, price, image, quantity, id } = toRefs(props);
+
+const myQuantity = ref(1);
+
+watchEffect(() => {
+  cart.changeQuantity(id.value, myQuantity.value)
+});
+
 </script>
