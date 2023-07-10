@@ -10,10 +10,14 @@
     </div>
 
     <div class="text-h5 text-weight-bold q-my-md">Your {{ cart.cart?.length === 0 ? "cart is empty!" : "Cart" }}</div>
+    <q-btn color="primary" label="Checkout" icon="shopping_basket" to="/checkout" class="q-ml-lg q-mb-sm" />
+
     <div v-for="cartItem in cart.cart" :key="cartItem.id">
       <CartItems :name="cartItem.name" :price="cartItem.price" :image="cartItem.photoURL" :quantity="cartItem.quantity"
         :id="cartItem.id" />
     </div>
+
+    <q-btn color="primary" icon="check" label="OK" @click="getTotal()" />
 
   </q-page>
 </template>
@@ -32,7 +36,19 @@ import Banner from 'components/UserBanner.vue';
 import CartItems from 'components/CartItem.vue';
 let qr = ref('');
 
-import { createStripeSession } from 'boot/createStripeID';
+let getTotal = () => {
+  let sum = 0
+
+  cart.cart?.forEach(item => {
+    sum += item.price * item.quantity
+  })
+
+  console.log(sum);
+
+  return sum
+}
+
+
 
 onMounted(async () => {
   let data = {
@@ -44,6 +60,5 @@ onMounted(async () => {
 
   qr.value = await generateQR(JSON.stringify(data));
 
-  createStripeSession();
 });
 </script>
