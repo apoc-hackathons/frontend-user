@@ -32,6 +32,8 @@ import Banner from 'components/UserBanner.vue';
 import CartItems from 'components/CartItem.vue';
 let qr = ref('');
 
+import { createStripeSession } from 'boot/createStripeID';
+
 onMounted(async () => {
   let data = {
     id: 'sdfsdfgdfhfjgh',
@@ -41,5 +43,7 @@ onMounted(async () => {
   };
 
   qr.value = await generateQR(JSON.stringify(data));
+
+  createStripeSession();
 });
 </script>

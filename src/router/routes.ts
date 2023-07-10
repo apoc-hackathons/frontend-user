@@ -24,10 +24,10 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/success',
+    path: '/cancelled',
     component: () => import('layouts/SuccessLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/stripe-success.vue') },
+      { path: '', component: () => import('pages/stripe-cancel.vue') },
     ],
   },
 
