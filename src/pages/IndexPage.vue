@@ -5,11 +5,11 @@
     <CurrentStoreInfo />
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
-
-    <ScannerComp />
     {{ cart.cart }}
+    <ScannerComp />
     <div v-for="cartItem in cart.cart" :key="cartItem.id">
-      <CartItems :name="cartItem.name" :price="cartItem.price" :image="cartItem.photoURL" :quantity="cartItem.quantity" />
+      <CartItems :name="cartItem.name" :price="cartItem.price" :image="qr" :quantity="cartItem.quantity"
+        :id="cartItem.id" />
     </div>
   </q-page>
 </template>
