@@ -37,6 +37,9 @@
 </template>
 
 <script setup lang="ts">
+
+
+
 import { userStore } from 'stores/userStore';
 
 import { useRouter } from 'vue-router';
@@ -47,6 +50,10 @@ userStore().handleChange();
 
 const router = useRouter();
 
+if (!user.user?.uid) {
+  router.push('/login');
+}
+
 const handleLogin = () => {
   if (!user.user?.uid) {
     user.login();
@@ -56,6 +63,8 @@ const handleLogin = () => {
     router.push('/login');
   }
 };
+
+
 
 router.push('/scan');
 const drawer = ref(true);

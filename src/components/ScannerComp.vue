@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="fit">
       <qrcode-stream @decode="onDecode" @init="onInit" />
     </div>
