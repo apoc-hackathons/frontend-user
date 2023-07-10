@@ -1,15 +1,93 @@
-# Swift Cart
+# SwiftCart Documentation
 
-## Description
+## Introduction
 
-Swift cart is a project which aims to enhance the shopping experience for users by implementing a convenient and efficient system using QR codes. Upon arriving at our shop, users will be provided with a unique QR code that they can generate through our mobile application or receive via email or text message. This QR code serves as their digital pass to enter the shop.
+The Self-Checkout Web Application is designed to reduce queues in stores by allowing customers to check out items on their own. This documentation provides an overview of the application, its functionality, and the API endpoints available for integration.
 
-To gain access, users simply need to scan the QR code using their smartphone's camera or a dedicated QR code scanning app. This step ensures a seamless and contactless entry process, eliminating the need for physical tickets or cards.
+### Stack Used
 
-Once inside the shop, users can freely browse and select the desired items or products they wish to purchase. Our shop will have QR codes placed near each product or item, enabling users to scan them using their smartphones. This action will provide them with detailed information, such as product descriptions, prices, and any special offers or discounts available.
+- Frontend: Vue.js, Quasar
+- Backend: Express.js, Node.js
+- Database: MongoDB
+- Language: TypeScript
 
-After completing their shopping, users can proceed to the checkout area or designated payment station. Here, they will encounter another QR code specifically designed for payment purposes. By scanning this QR code using their smartphone, users will be directed to a secure payment gateway integrated into our mobile application.
+## Features
 
-The payment gateway will offer various payment options, including credit/debit card, mobile wallets, or any other preferred digital payment method. Users can select their preferred payment method and complete the transaction securely and swiftly, concluding their shopping experience.
+1. Check-in: Customers can check into the store by scanning a QR code using the application. This notifies the store manager that a customer has entered.
+2. Cart Management: Customers can scan product QR codes to add items to their cart. They can increment or decrement the quantity of each item as per their preference.
+3. Payment: Customers can make payments using UPI or other supported payment methods.
+4. Real-time Inventory: The store manager can view the items in a customer's cart as they are added, enabling better stock management.
+5. Confirmation: After completing the payment, customers can scan a QR code to confirm their payment by matching the stored hash with the payment hash.
 
-This QR code-based system not only streamlines the entry process but also simplifies and expedites the payment process, providing users with a seamless and contactless shopping experience. By leveraging the convenience of QR codes, we aim to enhance customer satisfaction while ensuring a safe and efficient shopping environment."
+## API Endpoints
+
+### `GET /getProduct`
+
+- Description: Retrieves information about a specific product.
+- Request Parameters:
+  - `productId` (string): ID of the product to retrieve information for.
+- Response:
+  - `product` (object): Product information including name, price, description, etc.
+
+### `GET /getReviews`
+
+- Description: Retrieves reviews for a specific product.
+- Request Parameters:
+  - `productId` (string): ID of the product to retrieve reviews for.
+- Response:
+  - `reviews` (array): List of reviews for the specified product.
+
+### `DELETE /delReviews`
+
+- Description: Deletes a specific review for a product.
+- Request Parameters:
+  - `reviewId` (string): ID of the review to delete.
+- Response:
+  - `message` (string): Success message indicating the review has been deleted.
+
+### `PATCH /patchReviews`
+
+- Description: Updates a specific review for a product.
+- Request Parameters:
+  - `reviewId` (string): ID of the review to update.
+  - `review` (object): Updated review information including rating, comment, etc.
+- Response:
+  - `message` (string): Success message indicating the review has been updated.
+
+### `POST /postReviews`
+
+- Description: Adds a new review for a product.
+- Request Parameters:
+  - `productId` (string): ID of the product to add the review to.
+  - `review` (object): Review information including rating, comment, etc.
+- Response:
+  - `message` (string): Success message indicating the review has been added.
+
+### `POST /checkInUser`
+
+- Description: Allows a customer to check into the store.
+- Request Parameters:
+  - `qrCode` (string): QR code scanned by the customer to check-in.
+- Response:
+  - `message` (string): Success message indicating the customer has checked in.
+
+### `POST /checkoutUser`
+
+- Description: Allows a customer to checkout and complete the payment.
+- Request Parameters:
+  - `qrCode` (string): QR code scanned by the customer to confirm payment.
+  - `paymentHash` (string): Hash generated after completing the payment.
+- Response:
+  - `message` (string): Success message indicating the customer has checked out.
+
+### `POST /postUser`
+
+- Description: Registers a new user.
+- Request Parameters:
+  - `userData` (object): User information including name, email, etc.
+- Response:
+  - `message` (string): Success message indicating the user has been registered.
+
+## Conclusion
+
+The Self-Checkout Web Application provides a convenient way for customers to reduce queues in stores by enabling self-checkout. By leveraging QR codes, customers can easily add items to their cart, make payments, and confirm their purchases. The API endpoints listed above allow for seamless integration with the application, enabling access to product information, reviews, and user management functionalities. The technology stack of Vue.js, Quasar, Express.js, Node.js, TypeScript, and MongoDB provides a robust foundation for developing and deploying the application.
