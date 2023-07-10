@@ -34,5 +34,13 @@ export const useCartStore = defineStore('cart', {
       }
       this.cart = cart;
     },
+    deleteItem(id: string) {
+      const cart = this.cart || [];
+      const existingItem = cart.find((i) => i.id.startsWith(id));
+      if (existingItem) {
+        cart.splice(cart.indexOf(existingItem), 1);
+      }
+      this.cart = cart;
+    },
   },
 });

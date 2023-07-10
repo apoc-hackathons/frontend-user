@@ -5,12 +5,19 @@
     <CurrentStoreInfo />
 
     <div class="text-h5 text-weight-bold q-my-md">Your Cart</div>
+
+
+
+    <div class="flex flex-center q-my-xl">
+      <ScannerComp style="border-radius: 16px;" />
+    </div>
     {{ cart.cart }}
-    <ScannerComp />
+
     <div v-for="cartItem in cart.cart" :key="cartItem.id">
-      <CartItems :name="cartItem.name" :price="cartItem.price" :image="qr" :quantity="cartItem.quantity"
+      <CartItems :name="cartItem.name" :price="cartItem.price" :image="cartItem.photoURL" :quantity="cartItem.quantity"
         :id="cartItem.id" />
     </div>
+
   </q-page>
 </template>
 
@@ -30,8 +37,8 @@ let qr = ref('');
 
 onMounted(async () => {
   let data = {
-    id: 'sfgsdf23',
-    name: 'BallPalace',
+    id: 'sdfsdfgdfhfjgh',
+    name: 'BallPalace v2',
     photoURL: 'https://i.imgur.com/zdHr5JO.jpeg',
     price: 100,
   };
