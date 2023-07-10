@@ -1,4 +1,5 @@
 <template>
+  <q-btn color="primary" label="Checkout" icon="shopping_basket" to="/checkout" class="q-ml-lg q-mb-sm" />
   <q-card class="shadow-16 q-mb-sm q-mx-md" style="border-radius: 8px;" flat bordered>
     <q-card-section horizontal>
       <q-img class="col-2" width="120px" :ratio="1 / 1" :src="image" />
