@@ -5,6 +5,9 @@
       <q-header elevated class="header">
         <q-toolbar>
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+
+          <div class="text-h6">SwiftCart</div>
+
         </q-toolbar>
       </q-header>
 
